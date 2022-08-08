@@ -1,0 +1,33 @@
+<manifest package="com.lody.virtual"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <permission
+        android:name="com.lody.virtual.permission.VIRTUAL_BROADCAST"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.lody.virtual.permission.VIRTUAL_BROADCAST" />
+    <service android:name="com.lody.virtual.client.stub.KeepService" android:process=":x"/>
+    <provider
+        android:process=":x"
+        android:authorities="virtual.service.BinderProvider"
+        android:name="com.lody.virtual.service.BinderProvider"
+        android:exported="false" />
+    <activity
+        android:theme="@android:style/Theme.Translucent.NoTitleBar"
+        android:name="com.lody.virtual.client.stub.ShortcutHandleActivity" android:exported="true"/>
+    <activity
+        android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
+        android:name="com.lody.virtual.client.stub.StubActivity$C0" android:process=":p0" >
+        <meta-data android:name="X-Identity" android:value="Stub-User"/>
+    </activity>
+
+    <provider
+        android:process=":p0"
+        android:authorities="virtual.client.stub.StubContentProvider0"
+        android:name="com.lody.virtual.client.stub.StubContentProvider$C0"
+        android:exported="false">
+        <meta-data android:name="X-Identity" android:value="Stub-User"/>
+    </provider>
+    <!--and so on-->
+
+
+</manifest>

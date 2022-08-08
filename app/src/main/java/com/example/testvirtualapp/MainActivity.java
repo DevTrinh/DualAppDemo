@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
@@ -13,6 +14,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import com.lody.virtual.client.core.VirtualCore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +32,20 @@ public class MainActivity extends AppCompatActivity {
 
         rvApps = findViewById(R.id.lv_apps);
 
+        String s = VirtualCore.getCore()+"";
+
+
+
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        try {
+            VirtualCore.getCore().startup(base);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
     public void onClickBtListApps(View view) throws PackageManager.NameNotFoundException {
